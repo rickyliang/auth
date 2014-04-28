@@ -1,0 +1,10 @@
+*.db
+*.sql*
+*.*~
+app/static/js/select2*
+db_repository
+tmp
+*.pyc
+*.crt
+*.csr
+*.key

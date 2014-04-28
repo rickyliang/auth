@@ -1,0 +1,55 @@
+{% extends "./layout.html" %}
+
+{% block head %}
+{{ super() }}
+{% endblock %}
+{% block title %}Admin | Settings{% endblock %}
+
+
+
+{% block content %}
+    <h1>Application Settings</h1>
+    <form class="form-horizontal" action="{{ url_for('.admin_settings') }}" method=POST>
+    {{ form.hidden_tag() }}
+    <table class="table">
+        <thead>
+            <tr>
+                <td>Setting</td>
+                <td>Setting Value</td>
+            </tr>
+        </thead>
+        <tbody>
+        {% for field in form if field.name != 'csrf_token' and field.name != 'login' %}
+            <tr>
+                <div class="form-group">
+                    <td>{{ field.label(class_='control-label') }}</td>
+                    <td>
+                        <select class="form-control">
+                            <option value="1" selected>Awesome</option>
+                            <option value="2">Great</option>
+                            <option value="3">Pretty good</option>
+                            <option value="4">Not too shabby</option>
+                            <option value="5">Just.. bad.</option>
+                        </select>
+                    </td>
+            
+            
+                </div><!-- end form-group -->
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+    
+    <div class="form-group">
+        <div class="col-sm-1">
+            <input type="submit" class="btn btn-default" value="Save Changes">
+        </div>
+    </div>
+    </form>
+{% endblock %}
+
+
+
+{% block footer %}
+{{ super() }}
+{% endblock %}

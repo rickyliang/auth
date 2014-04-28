@@ -1,0 +1,87 @@
+{% extends "layout.html" %}
+
+{% block head %}
+{{ super() }}
+{% endblock %}
+{% block title %}Login{% endblock %}
+
+
+
+{% block content %}
+
+{% if enable_delay %}
+<div class="alert alert-danger">
+    <p>Too many failed login attempts. Please try again <span id="countdown"></span></p>
+</div>
+{% endif %}
+
+<form class="form-inline" action="{{ url_for('.login') }}" method=POST>
+    <h1>Login</h1>
+    {{ form.hidden_tag() }}
+    {% for field in form %}
+        {% if field.name != 'csrf_token' and field.name != 'remember_me' %}
+            {% if form.errors[field.name] %}
+            <div class="form-group has-error">
+            {% else %}
+            <div class="form-group">
+            {% endif %}
+                
+                {{ field.label(class_='sr-only control-label') }}
+                {{ field(class_='form-control', placeholder=field.label.text, autocomplete='off') }}
+            </div>
+        {% endif %}
+    {% endfor %}
+    
+    <div class="form-group">
+        <input type="submit" class="btn btn-default" value="Login">
+    </div>
+    
+    <br>
+    <br>
+    
+    <div class="form-group">
+        {{ register|safe }}
+    </div>
+    
+    <br>
+    
+    <div class="form-group">
+        {{ forgot_password|safe }}
+    </div>
+
+</form>
+<br/>
+{% endblock %}<!-- end .content -->
+
+
+
+{% block footer %}
+{{ super() }}
+{% endblock %}
+
+
+
+{% block scripts %}
+    {% if enable_delay %}
+    <script src="{{ url_for('static', filename='js/countdown.js') }}"></script>
+    <script type="text/javascript">
+        $(document).ready(function() {
+            var loginCountdown = new Countdown({
+                onUpdateStatus: function(seconds) {
+                    $('#countdown').html( 'in ' + seconds + ' seconds.' );
+                },
+                onCounterEnd: function() {
+                    $('#countdown').html( 'now.' );
+                    $(':submit').prop('disabled', false);
+                    $('form').prop('disabled', false);
+                }
+            });
+            
+            $(':submit').prop('disabled', true);
+            $('form').prop('disabled', true);
+            
+            loginCountdown.start();
+        });
+    </script>
+    {% endif %}
+{% endblock %}

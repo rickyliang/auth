@@ -1,0 +1,84 @@
+{% extends "./layout.html" %}
+
+{% block head %}
+{{ super() }}
+{% endblock %}
+{% block title %}Admin | Profile{% endblock %}
+
+
+
+{% block content %}
+    <h1>Profile</h1>
+    <p class="small">Last page request on: {{ user.last_seen }}</p>
+
+    <form class="form-horizontal" action="{{ url_for('.admin_profile', login=user.login) }}" method=POST>
+    {{ form.hidden_tag() }}
+    {% for field in form if field.name != 'csrf_token' and field.name != 'old_password' and field.name != 'login' %}
+        {% if form.errors[field.name] %}
+        <div class="form-group has-error">
+        {% else %}
+        <div class="form-group">
+        {% endif %}
+            {{ field.label(class_='col-sm-2 control-label') }}
+            <div class="col-sm-6">
+                <!-- Special case for New Password input. Adds help popover, 
+                        password strength bar, and help text. -->
+                {% if field.name == 'password' %}
+                <div class="input-group">
+                    {{ field(class_='form-control', value=user.attr(field.name), autocomplete='off') }}
+                    <span class="input-group-addon"><span id="password_help" class="glyphicon glyphicon-info-sign" data-toggle="popover" data-placement="right"></span></span>
+                </div><!-- end input-group -->
+                <span id="password_bar"><span class="bar"></span><span class="bar"></span><span class="bar"></span><span class="bar"></span></span>
+                <span class="small help-block">Leave empty if you do not wish to change your password.</span>
+                {% elif field.name == 'email' %}
+                <div class="input-group">
+                    {{ field(class_='form-control', value=user.attr(field.name), autocomplete='off') }}
+                    {% if g.user.is_activated() %}
+                        <span class="input-group-addon"><strong class="text-success">Verified</strong></span>
+                    {% else %}
+                        <span class="input-group-addon"><a href="{{ url_for('.resend_verification', login=user.login) }}" class="text-danger">Unverified</a></span>
+                    {% endif %}
+                </div>
+                {% else %}
+                {{ field(class_='form-control', value=user.attr(field.name), autocomplete='off') }}
+                {% endif %}
+            
+            
+            </div><!-- end col-sm-6 -->
+        </div><!-- end form-group -->
+    {% endfor %}
+    
+    <hr>
+    
+    {% if form.errors['old_password'] %}
+    <div class="form-group has-error">
+    {% else %}
+    <div class="form-group">
+    {% endif %}
+        {{ form.old_password.label(class_='col-sm-2 control-label') }}
+        <div class="col-sm-6">
+        {{ form.old_password(class_='form-control', autocomplete='off') }}
+        <span class="small help-block">Enter your current password to confirm your changes.</span>
+        </div>
+    </div>
+    
+    <div class="form-group">
+        <div class="col-sm-offset-2 col-sm-1">
+            <input type="submit" class="btn btn-default" value="Save Changes">
+        </div>
+    </div>
+</form>
+{% endblock %}
+
+
+
+{% block footer %}
+{{ super() }}
+{% endblock %}
+
+
+
+{% block scripts %}
+<script src="{{ url_for('static', filename='js/password_help.js') }}"></script>
+<script src="{{ url_for('static', filename='js/zxcvbn/zxcvbn-async.js') }}"></script>
+{% endblock %}

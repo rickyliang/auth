@@ -1,0 +1,30 @@
+/* style.css */
+
+.content, .footer {
+    width: 80%;
+    margin: 0 auto;
+}
+
+#password_result {
+    margin-right: 25px;
+    z-index: 100;
+}
+
+#password_bar {
+    height: 10px;
+    width: 100%;
+}
+
+.bar {
+    background: #e6e6e6;
+    position: relative;
+    display: inline-block;
+    height: 10px;
+    margin-left: 3%;
+    width: 22.75%; /* 22.75 * 4 = 91. We want 3% spacing between each of 4 bars, so
+                        there will be 3 gaps (3 * 3 = 9). Keep this in mind when adjusting. */
+}
+
+.bar:first-child {
+    margin-left: 0;
+}

@@ -1,0 +1,14 @@
+{% extends "layout.html" %}
+
+{% block content %}
+    {% with flashes = get_flashed_messages() %}
+        {% if flashes %}
+            <ul class="flashes">
+                {% for flash in flashes %}
+                    <li>{{ flash }}</li>
+                {% endfor %}
+            </ul>
+        {% endif %}
+    {% endwith %}
+    <h3>This is the index page</h3>
+{% endblock %}
