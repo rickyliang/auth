@@ -6,5 +6,15 @@ setup(
     packages=['app'],
     include_package_data=True,
     zip_safe=False,
-    install_requires=find_packages()
+    install_requires=['Flask',
+                      'Flask-Login',
+                      'Flask-Mail',
+                      'Flask-SQLAlchemy',
+                      'Flask-WTF',
+                      'passlib',
+                      'tempita',
+                      'decorator',
+                      'sqlalchemy-migrate',
+                      'pyOpenSSL'
+                      ]
 )

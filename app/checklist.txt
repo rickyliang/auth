@@ -58,7 +58,6 @@ Flask-Login==0.2.9
 Flask-Mail==0.9.0
 Flask-SQLAlchemy==1.0
 Flask-WTF==0.9.4
-Twitter bootstrap
 
 Modules
 pyOpenSSL
@@ -69,6 +68,7 @@ tempitaTemplate (used by db_create.py)
 libffi-dev (for installing pyOpenSSL or something)
 
 virtualenv==1.11.4
+Twitter bootstrap
 
 
 
