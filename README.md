@@ -5,10 +5,16 @@ A Flask web application that can handle logins, registration, forgotten password
 
 
 
-Dependencies
+Pre-Requisites
 -------------
 Please make sure that these are installed:
-* Python 2.7
+* Python 2.7.x
+* Python virtualenv module
+
+
+
+Dependencies
+-------------
 * Flask
 * Flask-Login
 * Flask-Mail
@@ -16,6 +22,10 @@ Please make sure that these are installed:
 * Flask-WTF
 * Python pyOpenSSL module
 * Python decorator module
+* Python passlib module
+* Python sqlalchemy-migrate module
+* Python tempita module
+* Python libffi-dev module
 * Twitter Bootstrap
 * jQuery
 
@@ -27,17 +37,21 @@ Download and unzip the files in a folder of your choice.
 
 Go into the directory.
 
-Ensure that the `virtualenv` package for Python is installed. Type `pip freeze` into terminal and check if `virtualenv` is listed.
+For Windows users, make sure _pip_ is installed. See [here](http://flask.pocoo.org/docs/installation/#pip-and-distribute-on-windows)
+
+Ensure that the `virtualenv` package for Python is installed. Type `pip freeze` into terminal and check if `virtualenv` is listed. If not, simply type into terminal `sudo pip install virtualenv` for Linux and OSX users, or `pip install virtualenv` for Windows users.
 
 Create a virtual environment called 'venv' by typing into terminal `virtualenv venv`.
 
+Activate the virtual environment. For Linux users, type into terminal `. venv/bin/activate`. For Windows users, type `venv/scripts/activate`.
+
 Retrieve all the dependencies. Run `python setup.py install` to automatically install the needed modules.
 
-Create the database. Run `python ./db_create.py` to create your database with the name specified in config.py.
+Create the database. Run `python db_create.py` to create your database with the name specified in config.py.
 
 Generate your own SSL keys. Run `python ssl_create.py` and enter in the information to your liking. Since this is a test application, it does not really matter what you enter in. However, make sure that you _do not_ enter in a password.
 
-In terminal, run `python ./run.py` to start the server.
+In terminal, run `python run.py` to start the server.
 
 
 
