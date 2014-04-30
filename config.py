@@ -7,9 +7,12 @@ SQLALCHEMY_DATABASE_URI = 'sqlite:///' + os.path.join(basedir, 'sample_db.db')
 SQLALCHEMY_MIGRATE_REPO = os.path.join(basedir, 'db_repository')
 SQLALCHEMY_ECHO = True
 
+# The file name of the newly-generated SSL certificate.
+# Be sure to change CTX down below to use the correct certificate.
+# Default: server
+CERT_NAME = 'server'
 
 CSRF_ENABLED = True
-#REMEMBER_COOKIE_DURATION = timedelta(seconds=10)
 
 # The number of seconds a link that is emailed to the user will be valid.
 # Applies for RESET_PASSWORD, ACCOUNT_ACTIVATION thus far.
@@ -26,8 +29,8 @@ ACTIVATE_SALT = 'activate-salt'
 SECRET_KEY = 'Y\xff\x11&}\nA\xe4,2\x1b\x87\x9d\x1dF\xa9S\x03`\x7f\x05\xcdR\xea-@@\x17\xd7\x12\x13e'
 
 CTX = SSL.Context(SSL.SSLv23_METHOD)
-CTX.use_privatekey_file('server.key')
-CTX.use_certificate_file('server.crt')
+CTX.use_privatekey_file('{0}.key'.format(CERT_NAME))
+CTX.use_certificate_file('{0}.crt'.format(CERT_NAME))
 
 # Flask-Mail configuration
 MAIL_SERVER = 'localhost'
