@@ -36,11 +36,11 @@ if os.path.isfile(_pk) and os.path.isfile(_cert):
     CTX.use_certificate_file(_cert)
 
 # Flask-Mail configuration
-MAIL_SERVER = 'localhost'
-MAIL_PORT = 25
-MAIL_USE_TLS = False
+MAIL_SERVER = 'localhost'   # Gmail: smtp.gmail.com
+MAIL_PORT = 25              # DO NOT CHANGE.
+MAIL_USE_TLS = False        # Set to True when using Gmail
 MAIL_USE_SSL = False
-MAIL_USERNAME = None
-MAIL_PASSWORD = None
+MAIL_USERNAME = None        # 'youremail@provider.com'
+MAIL_PASSWORD = None        # 'youremailpassword'
 
-ADMINS = ['admin@localhost']
+ADMINS = ['admin@localhost']    # Set to MAIL_USERNAME
