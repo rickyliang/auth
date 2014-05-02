@@ -5,4 +5,4 @@ Please click on the link below to verify your account, {{ user.login }}. If you 
 {{ activation_url }}
 
 Thank you,
-UC Berkeley Mathematics Department
+Ricky Co.

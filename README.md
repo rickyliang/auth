@@ -59,6 +59,8 @@ Setup
 
 Customization
 -------------
+In templates/layout.html and in the email text templates, change the organization name to your organization's name in the footers.
+
 In config.py, you may change your database name; SSL certificate pointers; secret keys (used for encrypting emails); mail settings; email link expiry duration.
 
 In run.py, you may change your host and port numbers.
