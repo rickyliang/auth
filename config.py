@@ -29,9 +29,11 @@ ACTIVATE_SALT = 'activate-salt'
 SECRET_KEY = 'Y\xff\x11&}\nA\xe4,2\x1b\x87\x9d\x1dF\xa9S\x03`\x7f\x05\xcdR\xea-@@\x17\xd7\x12\x13e'
 
 CTX = SSL.Context(SSL.SSLv23_METHOD)
-if os.path.isfile(CERT_NAME):
-    CTX.use_privatekey_file('{0}.key'.format(CERT_NAME))
-    CTX.use_certificate_file('{0}.crt'.format(CERT_NAME))
+_pk = '{}.key'.format(CERT_NAME)
+_cert = '{}.crt'.format(CERT_NAME)
+if os.path.isfile(_pk) and os.path.isfile(_cert):
+    CTX.use_privatekey_file(_pk)
+    CTX.use_certificate_file(_cert)
 
 # Flask-Mail configuration
 MAIL_SERVER = 'localhost'
