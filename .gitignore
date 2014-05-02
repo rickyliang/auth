@@ -4,6 +4,8 @@
 app/static/js/select2*
 db_repository
 tmp
+checklist.txt
+requirements.txt
 *.pyc
 *.crt
 *.csr

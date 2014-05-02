@@ -9,49 +9,51 @@ Pre-Requisites
 -------------
 Please make sure that these are installed:
 * Python 2.7.x
-* Python virtualenv module
+* Python virtualenv
 
 
 
-Dependencies
+Requirements
 -------------
 * Flask
 * Flask-Login
 * Flask-Mail
 * Flask-SQLAlchemy
 * Flask-WTF
-* Python pyOpenSSL module
-* Python decorator module
-* Python passlib module
-* Python sqlalchemy-migrate module
-* Python tempita module
-* Python libffi-dev module
+* Python pyOpenSSL
+* Python decorator
+* Python passlib
+* Python sqlalchemy-migrate
+* Python libffi-dev
 * Twitter Bootstrap
 * jQuery
 
 
 
-Usage
+Setup
 -------------
-Download and unzip the files in a folder of your choice.
+1. Download and unzip the files in a folder of your choice.
 
-Go into the directory.
+2. Go into the directory.
 
-For Windows users, make sure _pip_ is installed. See [here](http://flask.pocoo.org/docs/installation/#pip-and-distribute-on-windows)
+3. **Ensure that pip is installed.** For Windows users, see [here](http://flask.pocoo.org/docs/installation/#pip-and-distribute-on-windows) for instructions.
 
-Ensure that the `virtualenv` package for Python is installed. Type `pip freeze` into terminal and check if `virtualenv` is listed. If not, simply type into terminal `sudo pip install virtualenv` for Linux and OSX users, or `pip install virtualenv` for Windows users.
+4. **Ensure that the `virtualenv` module for Python is installed.** Type `pip freeze` into terminal and check if `virtualenv` is listed.
+    * If it is, update it to the most recent version by typing `sudo pip install --upgrade virtualenv`.
+    * If not, simply type into terminal `sudo pip install virtualenv` for Linux and OSX users, or `pip install virtualenv` for Windows users.
 
-Create a virtual environment called 'venv' by typing into terminal `virtualenv venv`.
+5. **Create a virtual environment.** Type into terminal `virtualenv [the name you want]` without the brackets.
 
-Activate the virtual environment. For Linux users, type into terminal `. venv/bin/activate`. For Windows users, type `venv/scripts/activate`.
+6. **Activate the virtual environment.** For Linux users, type into terminal `. [name of virtual env]/bin/activate`. For Windows users, type `[name of virtual env]/scripts/activate`.
 
-Retrieve all the dependencies. Run `python setup.py install` to automatically install the needed modules.
+7. **Retrieve all the requirements.** Run `pip install -e .` to automatically install the needed dependencies.
 
-Create the database. Run `python db_create.py` to create your database with the name specified in config.py.
+8. **Generate your own SSL keys.** Run `python ssl_create.py` and enter in the information to your liking.
+    * Since this is a test application, it does not really matter what you enter in. However, make sure that you _do not_ enter in a password.
 
-Generate your own SSL keys. Run `python ssl_create.py` and enter in the information to your liking. Since this is a test application, it does not really matter what you enter in. However, make sure that you _do not_ enter in a password.
+9. **Create the database.** Run `python db_create.py` to create your database with the name specified in config.py.
 
-In terminal, run `python run.py` to start the server.
+10. **Start the server.** Run `python run.py` and enjoy.
 
 
 

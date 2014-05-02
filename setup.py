@@ -12,9 +12,7 @@ setup(
                       'Flask-SQLAlchemy',
                       'Flask-WTF',
                       'passlib',
-                      'tempita',
                       'decorator',
                       'sqlalchemy-migrate',
-                      'pyOpenSSL'
-                      ]
+                      'pyOpenSSL']
 )
