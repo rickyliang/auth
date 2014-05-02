@@ -10,4 +10,5 @@ checklist.txt
 requirements.txt
 db_repository
 tmp
+venv
 app/static/js/select2*
