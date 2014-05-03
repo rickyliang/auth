@@ -11,7 +11,7 @@
 
 {% if enable_delay %}
 <div class="alert alert-danger">
-    <p>Too many failed login attempts. Please try again <span id="countdown">in &nbsp;&nbsp; seconds.</span></p>
+    <p>Too many failed login attempts. Please try again <span id="countdown"></span></p>
 </div>
 {% endif %}
 
@@ -67,6 +67,11 @@
     <script type="text/javascript">
         $(document).ready(function() {
             var loginCountdown = new Countdown({
+                onCounterStart: function() {
+                    $('#countdown').html( 'in &nbsp;&nbsp; seconds.' );
+                    $(':submit').prop('disabled', true);
+                    $('form').prop('disabled', true);
+                },
                 onUpdateStatus: function(seconds) {
                     $('#countdown').html( 'in ' + seconds + ' seconds.' );
                 },
@@ -76,9 +81,6 @@
                     $('form').prop('disabled', false);
                 }
             });
-            
-            $(':submit').prop('disabled', true);
-            $('form').prop('disabled', true);
             
             loginCountdown.start();
         });

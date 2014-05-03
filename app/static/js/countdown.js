@@ -4,8 +4,9 @@ function Countdown(options) {
     var timer,
     instance = this,
     seconds = options.seconds || 5,
-    updateStatus = options.onUpdateStatus || function () {},
-    counterEnd = options.onCounterEnd || function () {};
+    counterStart = options.onCounterStart || function() {},
+    updateStatus = options.onUpdateStatus || function() {},
+    counterEnd = options.onCounterEnd || function() {};
 
     function decrementCounter() {
         updateStatus(seconds);
@@ -16,14 +17,14 @@ function Countdown(options) {
         seconds--;
     }
 
-    this.start = function () {
+    this.start = function() {
+        counterStart();
         clearInterval(timer);
         timer = 0;
-        seconds = options.seconds || 5;
         timer = setInterval(decrementCounter, 1000);
     };
 
-    this.stop = function () {
+    this.stop = function() {
         clearInterval(timer);
     };
 }
