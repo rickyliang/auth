@@ -11,7 +11,7 @@ messages = {
     'RESET_PASSWORD_SUCCESS': 'Your password has been changed.',
     'SEND_ACTIVATE_EMAIL': 'Activation email successfully sent. Please check your email.',
     'SEND_RESET_EMAIL': 'Password reset email successfully sent. Please check your email.',
-    'EMAIL_SUBJECT': '[Berkeley Mathematics Department] Your account.'
+    'EMAIL_SUBJECT': 'Your account.'
 }
 
 def add_message(name, msg):
